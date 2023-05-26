@@ -31,9 +31,9 @@ Instalación
    Abre una terminal o línea de comandos y navega hasta el directorio donde se encuentra el código fuente.
    Ejecuta el siguiente comando para instalar las dependencias:
 
-    '''shell
-    pip install -r requirements.txt
-    '''
+   shell
+   
+      pip install -r requirements.txt
 
 Configuración
 
@@ -42,17 +42,19 @@ Antes de ejecutar la aplicación, debes realizar algunas configuraciones:
    Abre el archivo main.py en un editor de texto.
    Configura tus credenciales de Google Trends API en la siguiente línea:
 
-    '''python
+   python
+    
     pytrends = TrendReq(google_username='TU_NOMBRE_DE_USUARIO', google_password='TU_CONTRASEÑA', custom_useragent='TU_USER_AGENT')
-    '''
+    
 
 Configura tus credenciales de Twilio en las siguientes líneas:
 
-    '''python
+   python
+    
     account_sid = 'TU_ACCOUNT_SID'
     auth_token = 'TU_AUTH_TOKEN'
     twilio_number = '+1234567890'
-    '''
+    
 
 Uso
 
