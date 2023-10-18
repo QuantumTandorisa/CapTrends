@@ -8,7 +8,7 @@
           /_/                                      
 '''
 #######################################################
-#             CapTrends.py
+#    CapTrends.py
 #
 # This is an application that allows you to get, send 
 # and analyze search trends in real time.
