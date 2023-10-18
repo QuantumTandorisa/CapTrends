@@ -20,7 +20,7 @@
 #
 # 10/18/23 - Changed to Python3 (finally)
 #
-# Authors: Facundo Fernandez 
+# Author: Facundo Fernandez 
 #
 #
 #######################################################
