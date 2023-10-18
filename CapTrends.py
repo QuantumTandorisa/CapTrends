@@ -34,6 +34,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import schedule
 import time
+from config import google_username, google_password, custom_useragent
 
 #  Connect to the database / Conectar a la base de datos
 conn = sqlite3.connect('trends.db')
