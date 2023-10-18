@@ -1,3 +1,31 @@
+'''
+   ______          ______                    __    
+  / ____/___ _____/_  __/_______  ____  ____/ /____
+ / /   / __ `/ __ \/ / / ___/ _ \/ __ \/ __  / ___/
+/ /___/ /_/ / /_/ / / / /  /  __/ / / / /_/ (__  ) 
+\____/\__,_/ .___/_/ /_/   \___/_/ /_/\__,_/____/  
+          /_/                                      
+'''
+#######################################################
+#             CapTrends.py
+#
+# This is an application that allows you to get, send 
+# and analyze search trends in real time.
+# You can set priority topics and receive notifications
+# when those topics are among the popular trends. 
+# In addition, the application stores trends in a 
+# database and displays graphs to visualize trends
+# over time.
+#
+#
+# 10/18/23 - Changed to Python3 (finally)
+#
+# Authors: Facundo Fernandez 
+#
+#
+#######################################################
+
+
 import sqlite3
 import tkinter as tk
 from twilio.rest import Client
@@ -17,20 +45,18 @@ c.execute('''CREATE TABLE IF NOT EXISTS trends
              topic TEXT,
              date TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
 
-# Configure Google Trends API with your credentials / Configurar Google Trends API con tus credenciales
-pytrends = TrendReq(google_username='TU_NOMBRE_DE_USUARIO', google_password='TU_CONTRASEÑA', custom_useragent='TU_USER_AGENT')
-
-# Function to retrieve search trends / Función para recuperar tendencias de búsqueda
-def get_trends(country='ARGENTINA', limit=20):
-    try:
-        pytrends.trending_searches(pn=country)
-        results = pytrends.trending_searches(pn=country)
-        return results[:limit]
-    except Exception as e:
-        return str(e)
-
 # Function to send search trends / Función para enviar tendencias de búsqueda
 def send_trends():
+    def get_trends(country='ARGENTINA', limit=20):
+        pytrends = TrendReq(hl='es-AR', tz=360)
+        pytrends.build_payload(kw_list=['Python', 'ciberseguridad', 'pasantia', 'exploit'])  # Agrega tus palabras clave dentro de la lista.
+
+        try:
+            results = pytrends.trending_searches(pn=country)
+            return results[:limit]
+        except Exception as e:
+            return str(e)
+
     top_queries = get_trends()
     prioritized_topics = entry_topics.get().split(',')
     found_topics = set(prioritized_topics).intersection(top_queries)
@@ -54,7 +80,7 @@ def send_trends():
                 to=recipient_number
             )
 
-            # Store priority issues in the database / lmacenar temas prioritarios en la base de datos
+            # Store priority issues in the database / Almacenar temas prioritarios en la base de datos
             inserted_topics = []
             for topic in found_topics:
                 if topic not in inserted_topics:
@@ -88,6 +114,16 @@ def show_trends():
 
 # Function to generate and display the trend graph / Función para generar y mostrar el gráfico de tendencias
 def generate_graph():
+    def get_trends(country='ARGENTINA', limit=20):
+        pytrends = TrendReq(hl='es-AR', tz=360)
+        pytrends.build_payload(kw_list=[])  # Agrega tus palabras clave dentro de la lista.
+
+        try:
+            results = pytrends.trending_searches(pn=country)
+            return results[:limit]
+        except Exception as e:
+            return str(e)
+
     try:
         top_queries = get_trends()
         counts = range(1, len(top_queries) + 1)
@@ -105,6 +141,7 @@ def generate_graph():
         canvas.get_tk_widget().grid(row=7, columnspan=2)
     except Exception as e:
         label_trends.config(text=f"Error: {str(e)}")
+
 
 # Function to program the periodic sending of trends / Función para programar el envío periódico de tendencias
 def schedule_sending():
