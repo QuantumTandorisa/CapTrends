@@ -39,17 +39,19 @@ Configuración
 
 Antes de ejecutar la aplicación, debes realizar algunas configuraciones:
 
-   Abre el archivo main.py en un editor de texto.
-   Configura tus credenciales de Google Trends API en la siguiente línea:
-
+   Abre el archivo `config.py` en un editor de texto.
+   Configura tus credenciales de Google Trends API en el siguiente formato:
+   
    python
-    
-    pytrends = TrendReq(google_username='TU_NOMBRE_DE_USUARIO', google_password='TU_CONTRASEÑA', custom_useragent='TU_USER_AGENT')
+   
+   google_username = 'TU_NOMBRE_DE_USUARIO'
+   google_password = 'TU_CONTRASEÑA'
+   custom_useragent = 'TU_USER_AGENT'
     
 
 Configura tus credenciales de Twilio en las siguientes líneas:
 
-   python
+    python
     
     account_sid = 'TU_ACCOUNT_SID'
     auth_token = 'TU_AUTH_TOKEN'
@@ -58,7 +60,7 @@ Configura tus credenciales de Twilio en las siguientes líneas:
 
 Uso
 
-   Ejecuta el archivo main.py utilizando Python.
+   Ejecuta el archivo CapTrends.py utilizando Python.
    Se abrirá una ventana de interfaz de usuario.
    Completa los campos de temas prioritarios y número de teléfono.
    Haz clic en el botón "Obtener y Enviar Tendencias" para obtener las tendencias actuales y enviar notificaciones si se encuentran temas prioritarios.
