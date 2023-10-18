@@ -1,0 +1,4 @@
+twilio==8.9.1
+pytrends==4.9.2
+matplotlib==3.3.4
+schedule==1.2.1
