@@ -145,9 +145,18 @@ def generate_graph():
         label_trends.config(text=f"Error: {str(e)}")
 
 
-# Function to program the periodic sending of trends / Función para programar el envío periódico de tendencias
+# Function to schedule the periodic sending of trends / Función para programar el envío periódico de tendencias
 def schedule_sending():
-    interval = int(entry_interval.get())
+    entry_text = entry_interval.get()
+
+    # Checks if the string is not empty and if it contains only digits. / Verifica si la cadena no está vacía y si solo contiene dígitos.
+    if entry_text and entry_text.isdigit():
+        interval = int(entry_text)
+    else:
+        # Si la entrada no es válida, muestra un mensaje de error y no programa el envío. / If the entry is invalid, it displays an error message and does not schedule the shipment.
+        label_result.config(text="Intervalo no válido. Ingrese un número válido.")
+        return
+
     schedule.every(interval).minutes.do(send_trends)
 
     while True:
