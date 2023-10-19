@@ -10,8 +10,7 @@ CapTrends es una aplicación que te permite obtener, enviar y analizar tendencia
 ## Requisitos
 
 - Python 3.9 o superior.
-- Paquetes de Python: `sqlite3`, `tkinter`, `twilio`, `pytrends`, `matplotlib`, `schedule`.
-- `pip install -r requirements.txt`.
+- Bibliotecas requeridas, que puedes instalar ejecutando `pip install -r requirements.txt`. 
 
 ## Uso
 
