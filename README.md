@@ -14,10 +14,10 @@ CapTrends es una aplicación que te permite obtener, enviar y analizar tendencia
 
 ## Uso
 
-1. Clona este repositorio en tu máquina local.
-2. Ejecuta la aplicación con Python 3.9 o superior: `python3 CapTrends.py`.
-3. Configura los temas prioritarios y el número de teléfono en la interfaz de usuario.
-4. Utiliza los botones disponibles para obtener, enviar, mostrar y analizar tendencias de búsqueda.
+-  Clona este repositorio en tu máquina local.
+-  Ejecuta la aplicación con Python 3.9 o superior: `python3 CapTrends.py`.
+-  Configura los temas prioritarios y el número de teléfono en la interfaz de usuario.
+-  Utiliza los botones disponibles para obtener, enviar, mostrar y analizar tendencias de búsqueda.
 
 ## Configuración de API
 
